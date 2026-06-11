@@ -31,3 +31,17 @@ Feature:HerokuApp - Update
     And match response.[*].additionalneeds == "#present", "#string", "#notnull"
 
     And print 'UpdateResponse: ', response
+
+  Scenario: Update booking with invalid token - unhappy path
+
+    Given path 'booking/'
+    And path create.id
+    * header Accept = 'application/json'
+    * header Cookie = 'token=invalidtoken123'
+    And request read ('classpath:features/update/body.json')
+
+    When method PUT
+    Then status 403
+
+    And assert responseTime < 4000
+    And print 'updateUnhappyResponse: ', response

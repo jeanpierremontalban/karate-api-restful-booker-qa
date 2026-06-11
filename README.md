@@ -1,63 +1,77 @@
 # Api Automation Testing HerokuApp
-This project is a technical challenge with Karate APi Framework using the HerokuApp Api
 
-**API AUTOMATION TESTING:**
+**Autor:** Jean Piere Montalban Peña  
+**Fecha:** 11 de junio de 2026
 
-The challenge will be to automate an API for the following endpoints or paths:
-1. CreateBooking.
-2. Get Booking.
-3. Update Booking.
+Este proyecto es un reto técnico desarrollado con el framework Karate para la automatización de pruebas de API sobre HerokuApp.
 
-**The following API will be used:**
-• URL: https://restful-booker.herokuapp.com/apidoc/index.html
+---
 
-For the third scenario it is necessary to automate the Auth – Create Token since it is required in
-a header called Cookie where the value must be concatenated to the word “token=” with the
-response from the CreateToken endpoint.
+## API Automation Testing
 
-Carry out the scenarios and validations that you consider relevant.
+Los endpoints automatizados son:
+1. CreateBooking
+2. GetBooking
+3. UpdateBooking
 
+**API utilizada:**  
+URL: https://restful-booker.herokuapp.com/apidoc/index.html
 
-**Table of Contents**  
-- [Introduction](#introduction)
-- [Testing API with Karate](#testing_api_with_karate)
-- [Prerequisites](#prerequisites)
-- [Run the tests locally](#run-the-tests-locally)
+Para el tercer escenario se automatiza el endpoint **Auth – Create Token**, ya que el token es requerido en el header `Cookie` con el formato `token=<valor>`.
 
-# Introduction
+---
 
-In this project the most common examples of testing with the Karate framework are applied.
-To apply the test cases we will use the test website https://restful-booker.herokuapp.com/apidoc/index.html , which provides several endpoints on which you can make GET, PUT, POST and DELETE requests.
+## Tabla de Contenidos
+- [Introducción](#introducción)
+- [Testing API con Karate](#testing-api-con-karate)
+- [Prerrequisitos](#prerrequisitos)
+- [Ejecutar las pruebas localmente](#ejecutar-las-pruebas-localmente)
 
-# Testing API with Karate
+---
 
-**Karate** is the only open-source tool to combine API test-automation, mocks, performance-testing and even UI automation into a single, unified framework. The BDD syntax popularized by Cucumber is language-neutral, and easy for even non-programmers. Powerful JSON & XML assertions are built-in, and you can run tests in parallel for speed.
+## Introducción
 
-Test execution and report generation feels like any standard Java project. But there's also a stand-alone executable for teams not comfortable with Java. You don't have to compile code. Just write tests in a simple, readable syntax - carefully designed for HTTP, JSON, GraphQL and XML. And you can mix API and UI test-automation within the same test script.
+En este proyecto se aplican los casos de prueba más comunes con el framework Karate.  
+Se utiliza la API de https://restful-booker.herokuapp.com/apidoc/index.html, que expone endpoints para operaciones GET, PUT, POST y DELETE.
+
+---
+
+## Testing API con Karate
+
+**Karate** es la única herramienta open-source que combina automatización de pruebas de API, mocks, pruebas de rendimiento y automatización de UI en un único framework. La sintaxis BDD inspirada en Cucumber es neutral al lenguaje y accesible para no programadores. Incluye aserciones poderosas para JSON y XML, y permite ejecutar pruebas en paralelo.
 
 https://github.com/intuit/karate
 
-### Prerequisites
+---
 
-The project is developed in Java with Maven so it will install the following software:
+## Prerrequisitos
 
-* [Oracle Java 8 SDK](https://java.oracle.com)
-* [Gradle](https://gradle.org/)
-* Your favorite IDE, including :
-  * [Intellij IDEA](http://www.jetbrains.com): To run features or scenarios tests it will configure:  
-  
+El proyecto está desarrollado en Java con Gradle. Se requiere instalar:
+
+- [Oracle Java 8 SDK](https://java.oracle.com)
+- [Gradle](https://gradle.org/)
+- IDE recomendado: [IntelliJ IDEA](http://www.jetbrains.com)
+
+Configuración para ejecutar features/escenarios en IntelliJ:
+
 ```
-[Run configuration with Cucumber Java template]
-    Main class: com.intuit.karate.cli.Main    
+[Run configuration - Cucumber Java]
+    Main class: com.intuit.karate.cli.Main
     Glue: com.intuit.karate
 ```
 
+---
 
-## Run the tests locally
+## Ejecutar las pruebas localmente
 
-To try to run the demo in the local system, enter the root folder and execute the following commands to install the dependencies and start up the test runners one by one.
+Desde la carpeta raíz del proyecto, ejecutar:
 
+```bash
+gradle clean test
 ```
-gradle clean install -DskipTests
-gradle clean test -Dtest=ExamplesRunner
-gradle clean test -Dtest=DemoTestParallel
+
+O para ejecutar el runner en paralelo:
+
+```bash
+gradle clean test --tests features.parallel.Runner.Runner
+```

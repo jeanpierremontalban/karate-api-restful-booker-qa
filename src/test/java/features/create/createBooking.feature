@@ -32,3 +32,16 @@ Feature:HerokuApp - Create
     And match response.[*].additionalneeds == "#present", "#string", "#notnull"
 
     And print 'createResponse: ', response
+
+  @CreateUnhappy
+  Scenario: Create booking with empty body - unhappy path
+
+    Given path 'booking'
+    Given header Accept = 'application/json'
+    And request {}
+
+    When method POST
+    Then status 500
+
+    And assert responseTime < 4000
+    And print 'createUnhappyResponse: ', response

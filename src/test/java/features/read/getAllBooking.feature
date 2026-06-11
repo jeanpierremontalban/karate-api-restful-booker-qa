@@ -19,3 +19,12 @@ Feature:HerokuApp - Read
     And match response.[*].additionalneeds == "#present", "#string", "#notnull"
 
     And print 'getResponse: ', response
+
+  Scenario: Get booking with non-existent ID - unhappy path
+
+    Given path 'booking/999999999'
+    When method GET
+    Then status 404
+
+    And assert responseTime < 4000
+    And print 'getUnhappyResponse: ', response
