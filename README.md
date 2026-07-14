@@ -1,7 +1,7 @@
 # Api Automation Testing HerokuApp
 
 **Autor:** Jean Piere Montalban Peña  
-**Fecha:** 11 de junio de 2026
+**Fecha:** 13 de julio de 2026
 
 Este proyecto es un reto técnico desarrollado con el framework Karate para la automatización de pruebas de API sobre HerokuApp.
 
@@ -10,14 +10,14 @@ Este proyecto es un reto técnico desarrollado con el framework Karate para la a
 ## API Automation Testing
 
 Los endpoints automatizados son:
-1. CreateBooking
-2. GetBooking
-3. UpdateBooking
+1. Auth – CreateToken
+2. Booking – GetBooking
+3. Booking – UpdateBooking
 
 **API utilizada:**  
 URL: https://restful-booker.herokuapp.com/apidoc/index.html
 
-Para el tercer escenario se automatiza el endpoint **Auth – Create Token**, ya que el token es requerido en el header `Cookie` con el formato `token=<valor>`.
+Para los escenarios de actualización se automatiza el endpoint **Auth – CreateToken**, ya que el token es requerido en el header `Cookie` con el formato `token=<valor>`. Los casos incluyen escenarios happy y unhappy con aserciones sobre status code, tiempos de respuesta y estructura de payload.
 
 ---
 
